@@ -1,11 +1,8 @@
 import cv2
 
-# ==========================================
-# CONFIGURACIÓN
-# ==========================================
-VIDEO_PATH = "ruta/a/tu/video.mp4"
-# Define tu tecla secreta para salir antes de que acabe (Ejemplo: ord('s') para la letra 's', o 27 para 'Esc')
-TECLA_SECRETA = ord("j")
+VIDEO_PATH = "video.mp4"
+
+keybind = ord("j")
 
 
 def reproducir_video_bloqueado():
@@ -21,26 +18,26 @@ def reproducir_video_bloqueado():
       window_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN
   )
 
-  # Calcular el tiempo de espera por frame basado en los FPS del video para que corra a velocidad real
+  # Calcular el tiempo de espera entre frames para mostrar el vdieo a velocidad normal (fluido)
   fps = cap.get(cv2.CAP_PROP_FPS)
   if fps <= 0:
-    fps = 30  # Valor por defecto si no se detectan los FPS
+    fps = 30  # Por defecto si no se detectan los FPS
   delay = int(1000 / fps)
 
   while cap.isOpened():
     ret, frame = cap.read()
 
-    # Si el video termina, se cierra automáticamente
+    # Si el video termina, se cierra en auto
     if not ret:
       break
 
     cv2.imshow(window_name, frame)
 
-    # Leemos la tecla presionada (esperando el delay calculado por frame)
+    # Revisa la keybind dando la misma espera que el intervalo de frames
     key = cv2.waitKey(delay) & 0xFF
 
     # 1. Si presionan la tecla secreta, salimos antes de tiempo
-    if key == TECLA_SECRETA:
+    if key == KEYBIND:
       print("Cierre forzado.")
       break
 
