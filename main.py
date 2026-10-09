@@ -2,7 +2,7 @@ import cv2
 
 VIDEO_PATH = "video.mp4"
 
-keybind = ord("j")
+KEYBIND = ord("j")
 
 
 def reproducir_video_bloqueado():
@@ -18,7 +18,7 @@ def reproducir_video_bloqueado():
       window_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN
   )
 
-  # Calcular el tiempo de espera entre frames para mostrar el vdieo a velocidad normal (fluido)
+  # Calcular el tiempo de espera entre frames para mostrar el video a velocidad normal (fluido)
   fps = cap.get(cv2.CAP_PROP_FPS)
   if fps <= 0:
     fps = 30  # Por defecto si no se detectan los FPS
