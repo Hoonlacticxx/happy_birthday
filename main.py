@@ -9,10 +9,10 @@ def reproducir_video_bloqueado():
   cap = cv2.VideoCapture(VIDEO_PATH)
 
   if not cap.isOpened():
-    print("Error: No se pudo abrir el video :( .")
+    print("Error: No se pudo abrir el video :( ")
     return
 
-  window_name = "Reproductor Bloqueado"
+  window_name = "happy birthdayyy"
   cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
   cv2.setWindowProperty(
       window_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN
@@ -36,9 +36,9 @@ def reproducir_video_bloqueado():
     # Revisa la keybind dando la misma espera que el intervalo de frames
     key = cv2.waitKey(delay) & 0xFF
 
-    # 1. Si presionan la tecla secreta, salimos antes de tiempo
+    # 1. Si presionan la keybind, se cierra el programa
     if key == KEYBIND:
-      print("Cierre forzado.")
+      print("Cierre forzado")
       break
 
     # 2. Cualquier otra tecla es ignorada por completo (no hace nada)
